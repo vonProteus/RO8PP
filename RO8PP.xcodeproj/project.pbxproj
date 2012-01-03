@@ -13,6 +13,8 @@
 		7064490314B3016600BDFBBA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7064490114B3016600BDFBBA /* Credits.rtf */; };
 		7064490614B3016600BDFBBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7064490514B3016600BDFBBA /* AppDelegate.m */; };
 		7064490914B3016600BDFBBA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7064490714B3016600BDFBBA /* MainMenu.xib */; };
+		7064491114B3018900BDFBBA /* GUIControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7064491014B3018900BDFBBA /* GUIControl.m */; };
+		7064491314B3074B00BDFBBA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7064491214B3074B00BDFBBA /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +23,17 @@
 		706448F514B3016600BDFBBA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		706448F614B3016600BDFBBA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		706448F714B3016600BDFBBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		706448FA14B3016600BDFBBA /* RO8PP-Info.plist */ = {isa = PBXFileReference; path = "RO8PP-Info.plist"; sourceTree = "<group>"; };
+		706448FA14B3016600BDFBBA /* RO8PP-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RO8PP-Info.plist"; sourceTree = "<group>"; };
 		706448FC14B3016600BDFBBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		706448FE14B3016600BDFBBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		7064490014B3016600BDFBBA /* RO8PP-Prefix.pch */ = {isa = PBXFileReference; path = "RO8PP-Prefix.pch"; sourceTree = "<group>"; };
+		7064490014B3016600BDFBBA /* RO8PP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RO8PP-Prefix.pch"; sourceTree = "<group>"; };
 		7064490214B3016600BDFBBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		7064490414B3016600BDFBBA /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		7064490414B3016600BDFBBA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7064490514B3016600BDFBBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7064490814B3016600BDFBBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		7064490F14B3018900BDFBBA /* GUIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIControl.h; sourceTree = "<group>"; };
+		7064491014B3018900BDFBBA /* GUIControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIControl.m; sourceTree = "<group>"; };
+		7064491214B3074B00BDFBBA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7064491314B3074B00BDFBBA /* QuartzCore.framework in Frameworks */,
 				706448F314B3016600BDFBBA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +69,7 @@
 		706448F114B3016600BDFBBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7064491214B3074B00BDFBBA /* QuartzCore.framework */,
 				706448F214B3016600BDFBBA /* Cocoa.framework */,
 				706448F414B3016600BDFBBA /* Other Frameworks */,
 			);
@@ -82,6 +89,8 @@
 		706448F814B3016600BDFBBA /* RO8PP */ = {
 			isa = PBXGroup;
 			children = (
+				7064490F14B3018900BDFBBA /* GUIControl.h */,
+				7064491014B3018900BDFBBA /* GUIControl.m */,
 				7064490414B3016600BDFBBA /* AppDelegate.h */,
 				7064490514B3016600BDFBBA /* AppDelegate.m */,
 				7064490714B3016600BDFBBA /* MainMenu.xib */,
@@ -167,6 +176,7 @@
 			files = (
 				706448FF14B3016600BDFBBA /* main.m in Sources */,
 				7064490614B3016600BDFBBA /* AppDelegate.m in Sources */,
+				7064491114B3018900BDFBBA /* GUIControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
