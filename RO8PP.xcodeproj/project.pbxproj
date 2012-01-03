@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		706448F314B3016600BDFBBA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 706448F214B3016600BDFBBA /* Cocoa.framework */; };
+		706448FD14B3016600BDFBBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 706448FB14B3016600BDFBBA /* InfoPlist.strings */; };
+		706448FF14B3016600BDFBBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 706448FE14B3016600BDFBBA /* main.m */; };
+		7064490314B3016600BDFBBA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7064490114B3016600BDFBBA /* Credits.rtf */; };
+		7064490614B3016600BDFBBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7064490514B3016600BDFBBA /* AppDelegate.m */; };
+		7064490914B3016600BDFBBA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7064490714B3016600BDFBBA /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		706448EE14B3016600BDFBBA /* RO8PP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RO8PP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		706448F214B3016600BDFBBA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		706448F514B3016600BDFBBA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		706448F614B3016600BDFBBA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		706448F714B3016600BDFBBA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		706448FA14B3016600BDFBBA /* RO8PP-Info.plist */ = {isa = PBXFileReference; path = "RO8PP-Info.plist"; sourceTree = "<group>"; };
+		706448FC14B3016600BDFBBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		706448FE14B3016600BDFBBA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7064490014B3016600BDFBBA /* RO8PP-Prefix.pch */ = {isa = PBXFileReference; path = "RO8PP-Prefix.pch"; sourceTree = "<group>"; };
+		7064490214B3016600BDFBBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		7064490414B3016600BDFBBA /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		7064490514B3016600BDFBBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7064490814B3016600BDFBBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		706448EB14B3016600BDFBBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				706448F314B3016600BDFBBA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		706448E314B3016600BDFBBA = {
+			isa = PBXGroup;
+			children = (
+				706448F814B3016600BDFBBA /* RO8PP */,
+				706448F114B3016600BDFBBA /* Frameworks */,
+				706448EF14B3016600BDFBBA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		706448EF14B3016600BDFBBA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				706448EE14B3016600BDFBBA /* RO8PP.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		706448F114B3016600BDFBBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				706448F214B3016600BDFBBA /* Cocoa.framework */,
+				706448F414B3016600BDFBBA /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		706448F414B3016600BDFBBA /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				706448F514B3016600BDFBBA /* AppKit.framework */,
+				706448F614B3016600BDFBBA /* CoreData.framework */,
+				706448F714B3016600BDFBBA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		706448F814B3016600BDFBBA /* RO8PP */ = {
+			isa = PBXGroup;
+			children = (
+				7064490414B3016600BDFBBA /* AppDelegate.h */,
+				7064490514B3016600BDFBBA /* AppDelegate.m */,
+				7064490714B3016600BDFBBA /* MainMenu.xib */,
+				706448F914B3016600BDFBBA /* Supporting Files */,
+			);
+			path = RO8PP;
+			sourceTree = "<group>";
+		};
+		706448F914B3016600BDFBBA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				706448FA14B3016600BDFBBA /* RO8PP-Info.plist */,
+				706448FB14B3016600BDFBBA /* InfoPlist.strings */,
+				706448FE14B3016600BDFBBA /* main.m */,
+				7064490014B3016600BDFBBA /* RO8PP-Prefix.pch */,
+				7064490114B3016600BDFBBA /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		706448ED14B3016600BDFBBA /* RO8PP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7064490C14B3016600BDFBBA /* Build configuration list for PBXNativeTarget "RO8PP" */;
+			buildPhases = (
+				706448EA14B3016600BDFBBA /* Sources */,
+				706448EB14B3016600BDFBBA /* Frameworks */,
+				706448EC14B3016600BDFBBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RO8PP;
+			productName = RO8PP;
+			productReference = 706448EE14B3016600BDFBBA /* RO8PP.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		706448E514B3016600BDFBBA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 706448E814B3016600BDFBBA /* Build configuration list for PBXProject "RO8PP" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 706448E314B3016600BDFBBA;
+			productRefGroup = 706448EF14B3016600BDFBBA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				706448ED14B3016600BDFBBA /* RO8PP */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		706448EC14B3016600BDFBBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				706448FD14B3016600BDFBBA /* InfoPlist.strings in Resources */,
+				7064490314B3016600BDFBBA /* Credits.rtf in Resources */,
+				7064490914B3016600BDFBBA /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		706448EA14B3016600BDFBBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				706448FF14B3016600BDFBBA /* main.m in Sources */,
+				7064490614B3016600BDFBBA /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		706448FB14B3016600BDFBBA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				706448FC14B3016600BDFBBA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7064490114B3016600BDFBBA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7064490214B3016600BDFBBA /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		7064490714B3016600BDFBBA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7064490814B3016600BDFBBA /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7064490A14B3016600BDFBBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		7064490B14B3016600BDFBBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		7064490D14B3016600BDFBBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RO8PP/RO8PP-Prefix.pch";
+				INFOPLIST_FILE = "RO8PP/RO8PP-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7064490E14B3016600BDFBBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RO8PP/RO8PP-Prefix.pch";
+				INFOPLIST_FILE = "RO8PP/RO8PP-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		706448E814B3016600BDFBBA /* Build configuration list for PBXProject "RO8PP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7064490A14B3016600BDFBBA /* Debug */,
+				7064490B14B3016600BDFBBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7064490C14B3016600BDFBBA /* Build configuration list for PBXNativeTarget "RO8PP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7064490D14B3016600BDFBBA /* Debug */,
+				7064490E14B3016600BDFBBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 706448E514B3016600BDFBBA /* Project object */;
+}
