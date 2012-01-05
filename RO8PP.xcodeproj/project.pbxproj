@@ -16,6 +16,7 @@
 		7064491114B3018900BDFBBA /* GUIControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7064491014B3018900BDFBBA /* GUIControl.m */; };
 		7064491314B3074B00BDFBBA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7064491214B3074B00BDFBBA /* QuartzCore.framework */; };
 		70EE569814B5AC670074F6B1 /* Segmentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EE569714B5AC670074F6B1 /* Segmentation.m */; };
+		70EE569F14B5C9F80074F6B1 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 70EE569E14B5C9F80074F6B1 /* README */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		7064491214B3074B00BDFBBA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		70EE569614B5AC670074F6B1 /* Segmentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segmentation.h; sourceTree = "<group>"; };
 		70EE569714B5AC670074F6B1 /* Segmentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Segmentation.m; sourceTree = "<group>"; };
+		70EE569E14B5C9F80074F6B1 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 		706448E314B3016600BDFBBA = {
 			isa = PBXGroup;
 			children = (
+				70EE569E14B5C9F80074F6B1 /* README */,
 				706448F814B3016600BDFBBA /* RO8PP */,
 				706448F114B3016600BDFBBA /* Frameworks */,
 				706448EF14B3016600BDFBBA /* Products */,
@@ -126,6 +129,7 @@
 				706448EA14B3016600BDFBBA /* Sources */,
 				706448EB14B3016600BDFBBA /* Frameworks */,
 				706448EC14B3016600BDFBBA /* Resources */,
+				70EE56A014B5CA160074F6B1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -169,10 +173,27 @@
 				706448FD14B3016600BDFBBA /* InfoPlist.strings in Resources */,
 				7064490314B3016600BDFBBA /* Credits.rtf in Resources */,
 				7064490914B3016600BDFBBA /* MainMenu.xib in Resources */,
+				70EE569F14B5C9F80074F6B1 /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		70EE56A014B5CA160074F6B1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "#/usr/bin/ruby\ndef get_file_as_string(filename)\ndata = ''\nf = File.open(filename, \"r\") \nf.each_line do |line|\ndata += line\nend\nreturn data\nend\n\ndef increment_version\nproject_dir = ENV['PROJECT_DIR']\nplist_file = ENV['INFOPLIST_FILE']\nplist_filename = \"#{project_dir}/#{plist_file}\"     \n\nplist_string = get_file_as_string(plist_file)\n\nstart_of_key = plist_string.index(\"CFBundleVersion\")\nstart_of_value = plist_string.index(\"<string>\", start_of_key) + \"<string>\".length\nend_of_value = plist_string.index(\"</string>\", start_of_value)\nold_value = plist_string[start_of_value, end_of_value - start_of_value]\n\nprint \"Old version for CFBundleVersion: \" + old_value + \"\\n\"\nprint old_value.class.to_s + \"\\n\"\nold_value_int = old_value.to_i\nprint old_value_int.class.to_s + \"\\n\"  \nnum_tab = old_value.split('.').reverse\nrest_value = -1\nnew_values = []\nold_value.split('.').reverse.each { |x| \n    num_value = 0\n    if rest_value == -1\n    num_value = x.to_i + 1 \n    else\n    num_value = rest_value + x.to_i\n    end\n    \n    # we allow only 3 digits per segment x\n    if num_value > 999\n    num_value = 0;\n    rest_value = 1;      \n    else\n    rest_value = 0\n    end   \n    \n    new_values << num_value.to_s\n}\n\nputs new_values.reverse\n\nnew_value = new_values.reverse.join('.')\nnew_key = \"<string>#{new_value}</string>\"\nplist_string = \"#{plist_string[0, start_of_value - '<string>'.length]}#{new_key}#{plist_string[end_of_value + '</string>'.length, plist_string.length - (end_of_value+1)]}\"\nFile.open(plist_file, 'w') {|f| f.write(plist_string) }\nend                                                \n\nincrement_version";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		706448EA14B3016600BDFBBA /* Sources */ = {

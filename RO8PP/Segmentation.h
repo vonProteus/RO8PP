@@ -10,7 +10,9 @@
 
 @interface Segmentation : NSObject{
     
+    
 }
+@property 
 -(NSImage*) praireFireOn:(NSImage*)image 
                fromPoint:(NSPoint)start 
            withTolerancy:(NSUInteger)tolerancy;
