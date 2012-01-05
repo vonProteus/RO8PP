@@ -9,11 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface Segmentation : NSObject{
-    
+    NSColor* targetColor;
     
 }
-@property 
+@property (nonatomic, assign) NSPoint target;
+@property (nonatomic, retain) NSImage* image;
+@property (nonatomic, assign) NSUInteger tolerancy;
 -(NSImage*) praireFireOn:(NSImage*)image 
                fromPoint:(NSPoint)start 
            withTolerancy:(NSUInteger)tolerancy;
+-(void) fill;
+-(NSBitmapImageRep*) grayscaleImageRep:(NSBitmapImageRep*)img;
 @end

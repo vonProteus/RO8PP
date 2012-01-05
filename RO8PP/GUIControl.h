@@ -1,7 +1,7 @@
 /* GUIControl */
 
 #import <Cocoa/Cocoa.h>
-//#import <Foundation/Foundation.h>
+#import "Segmentation.h"
 
 @interface GUIControl : NSObject{
     IBOutlet NSWindow *MyWindow;

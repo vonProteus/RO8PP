@@ -37,6 +37,9 @@
 			NSLog(fileName);
 			
 			NSImage *imageFromBundle = [[NSImage alloc] initWithContentsOfFile:fileName];
+            Segmentation* s = [[Segmentation alloc] init];
+            
+            imageFromBundle = [s praireFireOn:imageFromBundle fromPoint:NSMakePoint(5, 5) withTolerancy:5];
           
       
 			if (imageFromBundle!=nil)

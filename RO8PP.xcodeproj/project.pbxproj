@@ -291,6 +291,7 @@
 				GCC_PREFIX_HEADER = "RO8PP/RO8PP-Prefix.pch";
 				INFOPLIST_FILE = "RO8PP/RO8PP-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -302,6 +303,7 @@
 				GCC_PREFIX_HEADER = "RO8PP/RO8PP-Prefix.pch";
 				INFOPLIST_FILE = "RO8PP/RO8PP-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
