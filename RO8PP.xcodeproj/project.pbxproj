@@ -15,6 +15,7 @@
 		7064490914B3016600BDFBBA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7064490714B3016600BDFBBA /* MainMenu.xib */; };
 		7064491114B3018900BDFBBA /* GUIControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7064491014B3018900BDFBBA /* GUIControl.m */; };
 		7064491314B3074B00BDFBBA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7064491214B3074B00BDFBBA /* QuartzCore.framework */; };
+		70EE569814B5AC670074F6B1 /* Segmentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EE569714B5AC670074F6B1 /* Segmentation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		7064490F14B3018900BDFBBA /* GUIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIControl.h; sourceTree = "<group>"; };
 		7064491014B3018900BDFBBA /* GUIControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIControl.m; sourceTree = "<group>"; };
 		7064491214B3074B00BDFBBA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		70EE569614B5AC670074F6B1 /* Segmentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segmentation.h; sourceTree = "<group>"; };
+		70EE569714B5AC670074F6B1 /* Segmentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Segmentation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +98,8 @@
 				7064490514B3016600BDFBBA /* AppDelegate.m */,
 				7064490714B3016600BDFBBA /* MainMenu.xib */,
 				706448F914B3016600BDFBBA /* Supporting Files */,
+				70EE569614B5AC670074F6B1 /* Segmentation.h */,
+				70EE569714B5AC670074F6B1 /* Segmentation.m */,
 			);
 			path = RO8PP;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				706448FF14B3016600BDFBBA /* main.m in Sources */,
 				7064490614B3016600BDFBBA /* AppDelegate.m in Sources */,
 				7064491114B3018900BDFBBA /* GUIControl.m in Sources */,
+				70EE569814B5AC670074F6B1 /* Segmentation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +304,7 @@
 				7064490E14B3016600BDFBBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

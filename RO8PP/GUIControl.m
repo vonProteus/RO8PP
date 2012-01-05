@@ -37,20 +37,8 @@
 			NSLog(fileName);
 			
 			NSImage *imageFromBundle = [[NSImage alloc] initWithContentsOfFile:fileName];
-            
-            CGImageSourceRef source;
-            
-            source = CGImageSourceCreateWithData((__bridge CFDataRef)[imageFromBundle TIFFRepresentation], NULL);
-            CGImageRef cgImage = CGImageSourceCreateImageAtIndex(source, 0, NULL);
- 
-            
-            CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-//            CGContextRef bmContext = CGBitmapContextCreate(NULL, imageFromBundle.size.width, imageFromBundle.size.height, 8,bytesPerRow, colorSpace, kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);
-            CGColorRef bmContext = CGBitmapContextCreate(NULL, imageFromBundle.size.width, imageFromBundle.size.height, 8, imageFromBundle.size.height*4, colorSpace, kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);
-            CGColorSpaceRelease(colorSpace);
-            CGContextDrawImage(bmContext, (CGRect){.origin.x = 0.0f, .origin.y = 0.0f, .size.width = imageFromBundle.size.width, .size.height = imageFromBundle.size.height}, cgImage);
-
-			
+          
+      
 			if (imageFromBundle!=nil)
 			{
 				
