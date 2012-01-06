@@ -7,8 +7,7 @@
 //
 
 #import "MainView.h"
-#define MAX_WIDTH 800
-#define MAX_HEIGHT 600
+
 
 @implementation MainView
 
@@ -69,10 +68,7 @@
 				
 				NSRect frame = [MyWindow frame];
 				frame.size = [imageFromBundle size];
-//				if (frame.size.width >= MAX_WIDTH)
-//					frame.size.width = MAX_WIDTH;
-//				if (frame.size.height >= MAX_HEIGHT)
-//					frame.size.height = MAX_HEIGHT;
+
 				frame.size.height += 20;
 				
 				[MyWindow setFrame:frame display:YES animate:YES];
@@ -102,10 +98,7 @@
         
         NSRect frame = [MyWindow frame];
         frame.size = [newImage size];
-//        if (frame.size.width >= MAX_WIDTH)
-//            frame.size.width = MAX_WIDTH;
-//        if (frame.size.height >= MAX_HEIGHT)
-//            frame.size.height = MAX_HEIGHT;
+
         frame.size.height += 20;
         
         [MyWindow setFrame:frame display:YES animate:YES];

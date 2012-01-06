@@ -68,7 +68,7 @@
     
     targetColor = [bmp colorAtX:start.x 
                               y:start.y];
-//    targetColor = [NSColor colorWithDeviceWhite:1 alpha:0];
+
     [self fillX:start.x 
               y:start.y];
     
