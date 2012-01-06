@@ -10,14 +10,21 @@
 
 @interface Segmentation : NSObject{
     NSColor* targetColor;
-    
+    NSBitmapImageRep* bmp;
+    BOOL** bmpVizited;
+    NSInteger X, Y;
+    NSInteger change;
 }
 @property (nonatomic, assign) NSPoint target;
 @property (nonatomic, retain) NSImage* image;
 @property (nonatomic, assign) NSUInteger tolerancy;
+
 -(NSImage*) praireFireOn:(NSImage*)image 
                fromPoint:(NSPoint)start 
            withTolerancy:(NSUInteger)tolerancy;
--(void) fill;
+
+-(void) fillX:(NSInteger)x
+            y:(NSInteger)y;
+
 -(NSBitmapImageRep*) grayscaleImageRep:(NSBitmapImageRep*)img;
 @end

@@ -19,83 +19,114 @@
     self.target = NSMakePoint(-1, -1);
     self.tolerancy = 0;
     targetColor = [[NSColor alloc] init];
+    X = 0;
+    Y = 0;
+    change = 0;
     return self;
 }
 
 -(NSImage*) praireFireOn:(NSImage *)image2 
                fromPoint:(NSPoint)start 
-           withTolerancy:(NSUInteger)tolerancy{
+           withTolerancy:(NSUInteger)tolerancy2{
+    self.tolerancy = tolerancy2;
+    bmp = [self grayscaleImageRep:[[NSBitmapImageRep alloc] initWithData:[image2 TIFFRepresentation]]];
     
-    NSBitmapImageRep* bmp = [[NSBitmapImageRep alloc] initWithData:[image2 TIFFRepresentation]];
-    NSBitmapImageRep* resultBmp = [self grayscaleImageRep:bmp];
-    
-    if (resultBmp == nil) {
+    if (bmp == nil) {
         {
-            NSString* stringTMP = [NSString stringWithFormat:@"nil\n"];
+            NSString* stringTMP = [NSString stringWithFormat:@"error nil\n"];
             DLog(@"%@",stringTMP);
         }
-
+        return nil;
     }
     
    
     
-    NSPoint sizeOfImage = NSMakePoint([bmp pixelsWide], [bmp pixelsHigh]);
+    X = [bmp pixelsWide];
+    Y = [bmp pixelsHigh];
         
-    if (start.x > sizeOfImage.x) {
+    if (start.x > X && start.x >=0) {
         return nil;
     }
-    if (start.y > sizeOfImage.y) {
+    if (start.y > Y && start.y >=0) {
         return nil;
     }
     
+   
+	
+
+    bmpVizited = (BOOL**)calloc(X, sizeof(BOOL *));
+    for(NSInteger i = 0; i < X; ++i) 
+		bmpVizited[i] = (BOOL*) calloc(Y, sizeof(BOOL));
+    
+    for (int a = 0; a < X; ++a) {
+        for (int b = 0; b < Y; ++b) {
+            bmpVizited[a][b] = NO;
+        }
+    }
+    change = 0;
+    
+    targetColor = [bmp colorAtX:start.x 
+                              y:start.y];
+//    targetColor = [NSColor colorWithDeviceWhite:1 alpha:0];
+    [self fillX:start.x 
+              y:start.y];
+    
+    free(bmpVizited);
     
     {
-        
-        NSString* stringTMP = [NSString stringWithFormat:@"x %f y %f %@ \n",resultBmp.size.width, resultBmp.size.height, [resultBmp colorAtX:5 y:5]];
+        NSString* stringTMP = [NSString stringWithFormat:@"zmienionycj %ld\n",change];
         DLog(@"%@",stringTMP);
     }
 
     
     
-    
-//    for (NSUInteger x = 0; x < sizeOfImage.x; ++x) {
-//        for (NSUInteger y = 0; y < sizeOfImage.y; ++y) {
-//            NSColor* rgba = [bmp colorAtX:x
-//                                        y:y];
-//            
-//            CGFloat r, g, b, h, s, br, a, white;
-//            r = [rgba redComponent]*255.0;
-//            g = [rgba greenComponent]*255.0;
-//            b = [rgba blueComponent]*255.0;
-//            h = [rgba hueComponent]*360.0;
-//            s = [rgba saturationComponent]*100.0;
-//            br = [rgba brightnessComponent]*100.0;
-//            a = [rgba alphaComponent]*255.0;
-////            NSColor* gray = [rgba colorUsingColorSpace:[NSColorSpace genericGrayColorSpace]];
-////            white = [gray whiteComponent]*255.0;
-//            
-////            [bmp setColor:[NSColor colorWithDeviceHue:r/255.0 
-////                                           saturation:b/255.0 
-////                                           brightness:g/255.0
-////                                                alpha:a/255.0] 
-////                      atX:x 
-////                        y:y];
-//            CGFloat comp[] = {white/255.0, a/255.0};
-//            NSColor* aColor = gray;            
-//            
-//            [bmp setColor:aColor
-//                      atX:x
-//                        y:y];
-//        }
-//    }
-
+   
     NSImage* result = [[NSImage alloc] init];
-    [result addRepresentation:resultBmp];
+    [result addRepresentation:bmp];
     
     return result;
 }
 
-- (NSBitmapImageRep*) grayscaleImageRep:(NSBitmapImageRep*) img{
+-(void) fillX:(NSInteger)x 
+            y:(NSInteger)y{
+   
+    
+    
+    if (x >= X || x <= 0) {
+        return;
+    }
+    if (y >= Y || y <= 0) {
+        return;
+    }
+    if (bmpVizited[x][y]) {
+        return;
+    }
+    bmpVizited[x][y] = YES;
+
+
+    NSColor* colorXY = [bmp colorAtX:x 
+                                   y:y];
+    CGFloat w = [colorXY whiteComponent];
+    CGFloat t = [targetColor whiteComponent];
+    
+    if (w>t-self.tolerancy/255.0 && w < t+self.tolerancy/255.0) {
+        ++change;
+        [bmp setColor:[NSColor colorWithDeviceWhite:0 alpha:1] 
+                  atX:x 
+                    y:y];
+        [self fillX:x-1 y:y-1];
+        [self fillX:x+1 y:y+1];
+        [self fillX:x+1 y:y-1];
+        [self fillX:x-1 y:y+1];
+    }
+    
+}
+
+
+
+
+
+-(NSBitmapImageRep*) grayscaleImageRep:(NSBitmapImageRep*)img{
     unsigned char *pixels = [img bitmapData];
     
     NSInteger row;
@@ -146,6 +177,7 @@
     }
     return destImageRep;
 }
+
 
 
 @end

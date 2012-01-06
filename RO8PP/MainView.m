@@ -1,8 +1,31 @@
-#import "GUIControl.h"
+//
+//  MainView.m
+//  RO8PP
+//
+//  Created by Maciej Krok on 2012-01-06.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "MainView.h"
 #define MAX_WIDTH 800
 #define MAX_HEIGHT 600
 
-@implementation GUIControl
+@implementation MainView
+
+- (id)initWithFrame:(NSRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code here.
+    }
+    
+    return self;
+}
+
+- (void)drawRect:(NSRect)dirtyRect
+{
+    // Drawing code here.
+}
 
 - (IBAction)openFile:(id)sender
 {
@@ -37,32 +60,53 @@
 			NSLog(fileName);
 			
 			NSImage *imageFromBundle = [[NSImage alloc] initWithContentsOfFile:fileName];
-            Segmentation* s = [[Segmentation alloc] init];
-            
-            NSImage* newImage = [s praireFireOn:imageFromBundle 
-                                      fromPoint:NSMakePoint(50, 50) 
-                                  withTolerancy:5];
-          
-      
-			if (newImage !=nil)
+            image = imageFromBundle;
+                     
+			if (imageFromBundle !=nil)
 			{
 				
-				[ViewImage setImage: newImage];
+				[ViewImage setImage: imageFromBundle];
 				
 				NSRect frame = [MyWindow frame];
-				frame.size = [newImage size];
-				if (frame.size.width >= MAX_WIDTH)
-					frame.size.width = MAX_WIDTH;
-				if (frame.size.height >= MAX_HEIGHT)
-					frame.size.height = MAX_HEIGHT;
+				frame.size = [imageFromBundle size];
+//				if (frame.size.width >= MAX_WIDTH)
+//					frame.size.width = MAX_WIDTH;
+//				if (frame.size.height >= MAX_HEIGHT)
+//					frame.size.height = MAX_HEIGHT;
 				
-				frame.size.width += 80;
-				frame.size.height += 150;
 				
 				[MyWindow setFrame:frame display:YES animate:YES];
 			}
 		}
 	}
+}
+
+- (void) mouseDown:(NSEvent*)someEvent{
+    if (image == nil) {
+        return;
+    }
+     NSPoint location = [self.window convertScreenToBase:[NSEvent mouseLocation]];
+    Segmentation* s = [[Segmentation alloc] init];
+    NSImage* newImage = [s praireFireOn:image
+                              fromPoint:location
+                          withTolerancy:5];
+    if (newImage !=nil)
+    {
+        
+        [ViewImage setImage: newImage];
+        
+        NSRect frame = [MyWindow frame];
+        frame.size = [newImage size];
+//        if (frame.size.width >= MAX_WIDTH)
+//            frame.size.width = MAX_WIDTH;
+//        if (frame.size.height >= MAX_HEIGHT)
+//            frame.size.height = MAX_HEIGHT;
+        
+        
+        [MyWindow setFrame:frame display:YES animate:YES];
+    }
+    image = newImage;
+
 }
 
 @end

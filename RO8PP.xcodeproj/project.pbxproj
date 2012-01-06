@@ -17,6 +17,7 @@
 		7064491314B3074B00BDFBBA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7064491214B3074B00BDFBBA /* QuartzCore.framework */; };
 		70EE569814B5AC670074F6B1 /* Segmentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EE569714B5AC670074F6B1 /* Segmentation.m */; };
 		70EE569F14B5C9F80074F6B1 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 70EE569E14B5C9F80074F6B1 /* README */; };
+		70F4C2AC14B729370016DBE4 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F4C2AB14B729370016DBE4 /* MainView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		70EE569614B5AC670074F6B1 /* Segmentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segmentation.h; sourceTree = "<group>"; };
 		70EE569714B5AC670074F6B1 /* Segmentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Segmentation.m; sourceTree = "<group>"; };
 		70EE569E14B5C9F80074F6B1 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		70F4C2AA14B729370016DBE4 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		70F4C2AB14B729370016DBE4 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 				706448F914B3016600BDFBBA /* Supporting Files */,
 				70EE569614B5AC670074F6B1 /* Segmentation.h */,
 				70EE569714B5AC670074F6B1 /* Segmentation.m */,
+				70F4C2AA14B729370016DBE4 /* MainView.h */,
+				70F4C2AB14B729370016DBE4 /* MainView.m */,
 			);
 			path = RO8PP;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				7064490614B3016600BDFBBA /* AppDelegate.m in Sources */,
 				7064491114B3018900BDFBBA /* GUIControl.m in Sources */,
 				70EE569814B5AC670074F6B1 /* Segmentation.m in Sources */,
+				70F4C2AC14B729370016DBE4 /* MainView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
