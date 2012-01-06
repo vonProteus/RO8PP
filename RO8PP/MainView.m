@@ -94,7 +94,7 @@
     Segmentation* s = [[Segmentation alloc] init];
     NSImage* newImage = [s praireFireOn:image
                               fromPoint:location
-                          withTolerancy:1];
+                          withTolerancy:5];
     if (newImage !=nil)
     {
         
