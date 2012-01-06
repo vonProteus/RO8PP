@@ -28,6 +28,8 @@
 
 - (IBAction)openFile:(id)sender
 {
+    //metode from http://www.xphere.me/old/info/cocoa_tut03/index.html
+    
 	// "Standard" open file panel
 	NSArray *fileTypes = [NSArray arrayWithObjects:@"jpg", @"gif",@"png", @"psd", @"tga", nil];
 	
