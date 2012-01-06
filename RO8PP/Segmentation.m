@@ -29,7 +29,7 @@
                fromPoint:(NSPoint)start 
            withTolerancy:(NSUInteger)tolerancy2{
     self.tolerancy = tolerancy2;
-    bmp = [self grayscaleImageRep:[[NSBitmapImageRep alloc] initWithData:[image2 TIFFRepresentation]]];
+    bmp = [[NSBitmapImageRep alloc] initWithData:[image2 TIFFRepresentation]];
     
     if (bmp == nil) {
         {
@@ -43,13 +43,14 @@
     
     X = [bmp pixelsWide];
     Y = [bmp pixelsHigh];
-        
+    start = NSMakePoint(start.x, Y - start.y);    
     if (start.x > X && start.x >=0) {
         return nil;
     }
     if (start.y > Y && start.y >=0) {
         return nil;
     }
+    
     
    
 	
@@ -106,12 +107,12 @@
 
     NSColor* colorXY = [bmp colorAtX:x 
                                    y:y];
-    CGFloat w = [colorXY whiteComponent];
-    CGFloat t = [targetColor whiteComponent];
+    CGFloat w = [self grayValueOfColor:colorXY];
+    CGFloat t = [self grayValueOfColor:targetColor];
     
-    if (w>t-self.tolerancy/255.0 && w < t+self.tolerancy/255.0) {
+    if (w >= t-self.tolerancy/255.0 && w <= t+self.tolerancy/255.0) {
         ++change;
-        [bmp setColor:[NSColor colorWithDeviceWhite:0 alpha:1] 
+        [bmp setColor:[NSColor greenColor] 
                   atX:x 
                     y:y];
         [self fillX:x-1 y:y-1];
@@ -178,6 +179,9 @@
     return destImageRep;
 }
 
+-(double)grayValueOfColor:(NSColor *)rgba{
+    return [rgba brightnessComponent];
+}
 
 
 @end

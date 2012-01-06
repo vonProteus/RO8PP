@@ -13,7 +13,6 @@
 		7064490314B3016600BDFBBA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7064490114B3016600BDFBBA /* Credits.rtf */; };
 		7064490614B3016600BDFBBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7064490514B3016600BDFBBA /* AppDelegate.m */; };
 		7064490914B3016600BDFBBA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7064490714B3016600BDFBBA /* MainMenu.xib */; };
-		7064491114B3018900BDFBBA /* GUIControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7064491014B3018900BDFBBA /* GUIControl.m */; };
 		7064491314B3074B00BDFBBA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7064491214B3074B00BDFBBA /* QuartzCore.framework */; };
 		70EE569814B5AC670074F6B1 /* Segmentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EE569714B5AC670074F6B1 /* Segmentation.m */; };
 		70EE569F14B5C9F80074F6B1 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 70EE569E14B5C9F80074F6B1 /* README */; };
@@ -34,8 +33,6 @@
 		7064490414B3016600BDFBBA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7064490514B3016600BDFBBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7064490814B3016600BDFBBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		7064490F14B3018900BDFBBA /* GUIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIControl.h; sourceTree = "<group>"; };
-		7064491014B3018900BDFBBA /* GUIControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIControl.m; sourceTree = "<group>"; };
 		7064491214B3074B00BDFBBA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		70EE569614B5AC670074F6B1 /* Segmentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segmentation.h; sourceTree = "<group>"; };
 		70EE569714B5AC670074F6B1 /* Segmentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Segmentation.m; sourceTree = "<group>"; };
@@ -98,8 +95,6 @@
 		706448F814B3016600BDFBBA /* RO8PP */ = {
 			isa = PBXGroup;
 			children = (
-				7064490F14B3018900BDFBBA /* GUIControl.h */,
-				7064491014B3018900BDFBBA /* GUIControl.m */,
 				7064490414B3016600BDFBBA /* AppDelegate.h */,
 				7064490514B3016600BDFBBA /* AppDelegate.m */,
 				7064490714B3016600BDFBBA /* MainMenu.xib */,
@@ -207,7 +202,6 @@
 			files = (
 				706448FF14B3016600BDFBBA /* main.m in Sources */,
 				7064490614B3016600BDFBBA /* AppDelegate.m in Sources */,
-				7064491114B3018900BDFBBA /* GUIControl.m in Sources */,
 				70EE569814B5AC670074F6B1 /* Segmentation.m in Sources */,
 				70F4C2AC14B729370016DBE4 /* MainView.m in Sources */,
 			);

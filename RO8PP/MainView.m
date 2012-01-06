@@ -73,7 +73,7 @@
 //					frame.size.width = MAX_WIDTH;
 //				if (frame.size.height >= MAX_HEIGHT)
 //					frame.size.height = MAX_HEIGHT;
-				
+				frame.size.height += 20;
 				
 				[MyWindow setFrame:frame display:YES animate:YES];
 			}
@@ -86,10 +86,15 @@
         return;
     }
      NSPoint location = [self.window convertScreenToBase:[NSEvent mouseLocation]];
+    {
+        NSString* stringTMP = [NSString stringWithFormat:@"%f %f\n",location.x,location.y];
+        DLog(@"%@",stringTMP);
+    }
+
     Segmentation* s = [[Segmentation alloc] init];
     NSImage* newImage = [s praireFireOn:image
                               fromPoint:location
-                          withTolerancy:5];
+                          withTolerancy:1];
     if (newImage !=nil)
     {
         
@@ -101,7 +106,7 @@
 //            frame.size.width = MAX_WIDTH;
 //        if (frame.size.height >= MAX_HEIGHT)
 //            frame.size.height = MAX_HEIGHT;
-        
+        frame.size.height += 20;
         
         [MyWindow setFrame:frame display:YES animate:YES];
     }
