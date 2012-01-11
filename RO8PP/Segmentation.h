@@ -17,7 +17,11 @@
 }
 @property (nonatomic, assign) NSPoint target;
 @property (nonatomic, retain) NSImage* image;
+@property (nonatomic, retain) NSImage* map;
 @property (nonatomic, assign) NSUInteger tolerancy;
+
+-(NSImage*) addMapTo:(NSImage*)imageToMap 
+           withColor:(NSColor*)rgba;
 
 -(NSImage*) praireFireOn:(NSImage*)image 
                fromPoint:(NSPoint)start 

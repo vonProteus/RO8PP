@@ -11,11 +11,16 @@
 
 @interface MainView : NSView{
     IBOutlet NSWindow *MyWindow;
-    IBOutlet NSImageView *ViewImage; 
+    IBOutlet NSImageView *ViewImage;
+    IBOutlet NSImageView *helpViewImage;
     NSImage* image;
+    NSImage* helpImage;
     NSImage* hist;
+    IBOutlet NSSlider* tolerancySlider;
+    IBOutlet NSTextField* tolerancyTextField;
 }
-- (IBAction)openFile:(id)sender;
--(IBAction)hist:(id)sender;
+-(IBAction) openFile:(id)sender;
+-(IBAction) hist:(id)sender;
+-(IBAction) valueDidChange:(id)sender;
 @end
  

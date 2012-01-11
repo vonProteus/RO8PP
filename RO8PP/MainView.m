@@ -62,6 +62,9 @@
 			
 			NSImage *imageFromBundle = [[NSImage alloc] initWithContentsOfFile:fileName];
             image = imageFromBundle;
+            
+            
+            
                      
 			if (imageFromBundle !=nil)
 			{
@@ -80,6 +83,20 @@
 				frame.size.height += 20;
 				
 				[MyWindow setFrame:frame display:YES animate:YES];
+                helpImage = [[NSImage alloc] init];
+                
+                NSBitmapImageRep* bmp2 = [[NSBitmapImageRep alloc] initWithData:[imageFromBundle TIFFRepresentation]];
+                for (int a = 0; a < [bmp2 pixelsWide]; ++a) {
+                    for (int b = 0; b < [bmp2 pixelsHigh]; ++b) {
+                        [bmp2 setColor:[NSColor colorWithDeviceRed:1 green:1 blue:1 alpha:1] atX:a y:b];
+                    }
+                }
+                NSImage* newHelpImage = [[NSImage alloc] init];
+                [newHelpImage addRepresentation:bmp2];
+                [helpViewImage setImage:newHelpImage];
+                helpImage = newHelpImage;
+                
+
 			}
 		}
 	}
@@ -98,11 +115,23 @@
     Segmentation* s = [[Segmentation alloc] init];
     NSImage* newImage = [s praireFireOn:image
                               fromPoint:location
-                          withTolerancy:50];
+                          withTolerancy:[tolerancySlider integerValue]];
+    
+    NSImage* newHelpImage = [s addMapTo:helpImage
+                              withColor:[NSColor colorWithDeviceRed:(arc4random()%255)/255.0
+                                                              green:(arc4random()%255)/255.0
+                                                               blue:(arc4random()%255)/255.0
+                                                              alpha:0.9]];
+    if (newHelpImage ==nil){
+        DLog(@"error: nie ma helpImage\n");
+    }
+    
+    
     if (newImage !=nil)
     {
         
         [ViewImage setImage: newImage];
+        [helpViewImage setImage: newHelpImage];
         
         NSRect frame = [MyWindow frame];
         frame.size = [newImage size];
@@ -112,7 +141,15 @@
         [MyWindow setFrame:frame display:YES animate:YES];
     }
     image = newImage;
+    helpImage = newHelpImage;
+    
 
+}
+
+-(IBAction) valueDidChange:(id)sender{
+//    DLog(@"test: ok?\n");
+    
+    [tolerancyTextField setStringValue:[NSString stringWithFormat:@"tolerancja: %ld", [tolerancySlider integerValue]]];
 }
 
 @end

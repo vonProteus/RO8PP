@@ -12,10 +12,12 @@
 @synthesize image;
 @synthesize target;
 @synthesize tolerancy;
+@synthesize map;
 
 -(id) init{
     self = [super init];
     self.image = [[NSImage alloc] init];
+    self.map = [[NSImage alloc] init];
     self.target = NSMakePoint(-1, -1);
     self.tolerancy = 0;
     targetColor = [[NSColor alloc] init];
@@ -28,6 +30,7 @@
 -(NSImage*) praireFireOn:(NSImage *)image2 
                fromPoint:(NSPoint)start 
            withTolerancy:(NSUInteger)tolerancy2{
+    
     self.tolerancy = tolerancy2;
     bmp = [[NSBitmapImageRep alloc] initWithData:[image2 TIFFRepresentation]];
     
@@ -86,16 +89,30 @@
 //    [bmp setColor:[NSColor yellowColor] 
 //              atX:start.x y:start.y];
 
-    free(bmpVizited);
+//    
+//    NSBitmapImageRep* bmp2 = [[NSBitmapImageRep alloc] initWithData:[image2 TIFFRepresentation]];
+//    for (int a = 0; a < X; ++a) {
+//        for (int b = 0; b < Y; ++b) {
+//            if (bmpVizited[a][b]) {
+//                [bmp2 setColor:[NSColor blackColor] atX:a y:b];
+//            } else{
+//                [bmp2 setColor:[NSColor whiteColor] atX:a y:b];
+//            }
+//        }
+//    }
+//    [map addRepresentation:bmp2];
+
+    
+    
+    
+    
+    
     
     {
         NSString* stringTMP = [NSString stringWithFormat:@"zmieniono %ld\n",change];
         DLog(@"%@",stringTMP);
     }
 
-    
-    
-   
     NSImage* result = [[NSImage alloc] init];
     [result addRepresentation:bmp];
     
@@ -216,5 +233,31 @@
         }
     }
 
+}
+
+-(NSImage*) addMapTo:(NSImage *)imageToMap 
+           withColor:(NSColor *)rgba{
+//    NSBitmapImageRep* mapBmp = [[NSBitmapImageRep alloc] initWithData:[map TIFFRepresentation]];
+    NSBitmapImageRep* imageToMapBmp = [[NSBitmapImageRep alloc] initWithData:[imageToMap TIFFRepresentation]];
+    
+    for (NSInteger x = 0; x < X; ++x) {
+        for (NSInteger y = 0; y < Y; ++y) {
+            if (bmpVizited[x][y]) {
+                [imageToMapBmp setColor:rgba 
+                                    atX:x y:y];
+//                DLog(@"test: byl czarny\n");
+            }
+        }
+    }
+    
+    NSImage* result = [[NSImage alloc] init];
+    [result addRepresentation:imageToMapBmp];
+    
+    return result;
+    
+}
+
+-(void) dealloc{
+    free(bmpVizited);
 }
 @end
