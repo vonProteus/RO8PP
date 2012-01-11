@@ -8,6 +8,7 @@
 
 #import "Segmentation.h"
 
+
 @implementation Segmentation
 @synthesize image;
 @synthesize target;
@@ -55,9 +56,7 @@
     if (start.y > Y && start.y >=0) {
         return nil;
     }
-    
-//    [bmp setColor:[NSColor yellowColor] atX:start.x y:start.y];
-    
+
     
    
 	
@@ -79,33 +78,7 @@
 
     [self fillX:start.x 
               y:start.y];
-//    int r = 50;
-//    for (int a = -r; a < r; ++a) {
-//        for (int b = -r; b < r; ++b) {
-//            [bmp setColor:[NSColor whiteColor]
-//                      atX:(NSInteger)(start.x)+a y:(NSInteger)(start.y)+b];
-//        }
-//    }
-//    [bmp setColor:[NSColor yellowColor] 
-//              atX:start.x y:start.y];
 
-//    
-//    NSBitmapImageRep* bmp2 = [[NSBitmapImageRep alloc] initWithData:[image2 TIFFRepresentation]];
-//    for (int a = 0; a < X; ++a) {
-//        for (int b = 0; b < Y; ++b) {
-//            if (bmpVizited[a][b]) {
-//                [bmp2 setColor:[NSColor blackColor] atX:a y:b];
-//            } else{
-//                [bmp2 setColor:[NSColor whiteColor] atX:a y:b];
-//            }
-//        }
-//    }
-//    [map addRepresentation:bmp2];
-
-    
-    
-    
-    
     
     
     {
@@ -151,10 +124,15 @@
 //        [self fillX:x+1 y:y-1];
 //        [self fillX:x-1 y:y+1];
         
-        [self fillX:x y:y-1];
-        [self fillX:x y:y+1];
-        [self fillX:x+1 y:y];
-        [self fillX:x-1 y:y];
+//        [self fillX:x y:y-1];
+//        [self fillX:x y:y+1];
+//        [self fillX:x+1 y:y];
+//        [self fillX:x-1 y:y];
+        
+        [stack push:[NSValue valueWithPoint:NSMakePoint(x, y-1)]];
+        [stack push:[NSValue valueWithPoint:NSMakePoint(x, y+1)]];
+        [stack push:[NSValue valueWithPoint:NSMakePoint(x+1, y)]];
+        [stack push:[NSValue valueWithPoint:NSMakePoint(x-1, y)]];
     }
     
 }
@@ -259,5 +237,85 @@
 
 -(void) dealloc{
     free(bmpVizited);
+}
+
+
+
+
+-(NSImage*) floodFillOn:(NSImage *)image2
+              fromPoint:(NSPoint)start 
+          withTolerancy:(NSUInteger)tolerancy2{
+    
+    
+    self.tolerancy = tolerancy2;
+    bmp = [[NSBitmapImageRep alloc] initWithData:[image2 TIFFRepresentation]];
+    
+    if (bmp == nil) {
+        DLog(@"error: nil\n");
+        return nil;
+    }
+    
+    
+    
+    X = [bmp pixelsWide];
+    Y = [bmp pixelsHigh];
+    {
+        NSString* stringTMP = [NSString stringWithFormat:@"X: %ld Y: %ld\n", X,Y];
+        DLog(@"%@",stringTMP);
+    }
+    
+    start = NSMakePoint(start.x -1, Y - start.y -2);    
+    if (start.x > X && start.x >=0) {
+        return nil;
+    }
+    if (start.y > Y && start.y >=0) {
+        return nil;
+    }
+    
+    
+    bmpVizited = (BOOL**)calloc(X, sizeof(BOOL *));
+    for(NSInteger i = 0; i < X; ++i) 
+		bmpVizited[i] = (BOOL*) calloc(Y, sizeof(BOOL));
+    
+    for (int a = 0; a < X; ++a) {
+        for (int b = 0; b < Y; ++b) {
+            bmpVizited[a][b] = NO;
+        }
+    }
+
+    
+    
+    
+	change = 0;
+    
+    targetColor = [bmp colorAtX:start.x 
+                              y:start.y];
+    
+    stack = [[NSMutableArray alloc] init];
+    
+    NSValue* aValue = [NSNumber valueWithPoint:start];
+    
+    [stack push:aValue];
+    
+    while ([stack count] != 0) {
+        NSPoint p = [[stack pop] pointValue];
+        [self fillX:p.x y:p.y];
+    }
+    
+    
+    {
+        NSString* stringTMP = [NSString stringWithFormat:@"zmieniono %ld\n",change];
+        DLog(@"%@",stringTMP);
+    }
+    
+    NSImage* result = [[NSImage alloc] init];
+    [result addRepresentation:bmp];
+    
+    DLog(@"test: end\n");
+    return result;
+
+    
+
+    
 }
 @end

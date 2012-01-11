@@ -113,9 +113,9 @@
     }
 
     Segmentation* s = [[Segmentation alloc] init];
-    NSImage* newImage = [s praireFireOn:image
-                              fromPoint:location
-                          withTolerancy:[tolerancySlider integerValue]];
+    NSImage* newImage = [s floodFillOn:image
+                             fromPoint:location
+                         withTolerancy:[tolerancySlider integerValue]];
     
     NSImage* newHelpImage = [s addMapTo:helpImage
                               withColor:[NSColor colorWithDeviceRed:(arc4random()%255)/255.0

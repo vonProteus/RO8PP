@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7059B46E14BDD6C8008BC445 /* NSMutableArray+Stack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7059B46D14BDD6C8008BC445 /* NSMutableArray+Stack.m */; };
 		706448F314B3016600BDFBBA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 706448F214B3016600BDFBBA /* Cocoa.framework */; };
 		706448FD14B3016600BDFBBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 706448FB14B3016600BDFBBA /* InfoPlist.strings */; };
 		706448FF14B3016600BDFBBA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 706448FE14B3016600BDFBBA /* main.m */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7059B46C14BDD6C8008BC445 /* NSMutableArray+Stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Stack.h"; sourceTree = "<group>"; };
+		7059B46D14BDD6C8008BC445 /* NSMutableArray+Stack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Stack.m"; sourceTree = "<group>"; };
 		706448EE14B3016600BDFBBA /* RO8PP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RO8PP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		706448F214B3016600BDFBBA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		706448F514B3016600BDFBBA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -103,6 +106,8 @@
 				70EE569714B5AC670074F6B1 /* Segmentation.m */,
 				70F4C2AA14B729370016DBE4 /* MainView.h */,
 				70F4C2AB14B729370016DBE4 /* MainView.m */,
+				7059B46C14BDD6C8008BC445 /* NSMutableArray+Stack.h */,
+				7059B46D14BDD6C8008BC445 /* NSMutableArray+Stack.m */,
 			);
 			path = RO8PP;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				7064490614B3016600BDFBBA /* AppDelegate.m in Sources */,
 				70EE569814B5AC670074F6B1 /* Segmentation.m in Sources */,
 				70F4C2AC14B729370016DBE4 /* MainView.m in Sources */,
+				7059B46E14BDD6C8008BC445 /* NSMutableArray+Stack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +293,7 @@
 		7064490D14B3016600BDFBBA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RO8PP/RO8PP-Prefix.pch";
 				INFOPLIST_FILE = "RO8PP/RO8PP-Info.plist";
@@ -299,6 +306,7 @@
 		7064490E14B3016600BDFBBA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RO8PP/RO8PP-Prefix.pch";
 				INFOPLIST_FILE = "RO8PP/RO8PP-Info.plist";

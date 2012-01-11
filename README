@@ -5,5 +5,5 @@ Projekt na Rospoznawanie Obrazu AGH Krakow 2011/12
 todo:
 -histogramy
 +probmien rgb
--parametry w pliku kofiguracyjnym
--obraz po segmentacji
++parametry w pliku kofiguracyjnym
++obraz po segmentacji

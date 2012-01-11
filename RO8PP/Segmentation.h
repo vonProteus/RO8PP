@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSMutableArray+Stack.h"
 
 @interface Segmentation : NSObject{
     NSColor* targetColor;
@@ -14,18 +15,19 @@
     BOOL** bmpVizited;
     NSInteger X, Y;
     NSInteger change;
+    NSMutableArray* stack;
 }
 @property (nonatomic, assign) NSPoint target;
-@property (nonatomic, retain) NSImage* image;
-@property (nonatomic, retain) NSImage* map;
+@property (nonatomic, strong) NSImage* image;
+@property (nonatomic, strong) NSImage* map;
 @property (nonatomic, assign) NSUInteger tolerancy;
 
 -(NSImage*) addMapTo:(NSImage*)imageToMap 
            withColor:(NSColor*)rgba;
 
--(NSImage*) praireFireOn:(NSImage*)image 
-               fromPoint:(NSPoint)start 
-           withTolerancy:(NSUInteger)tolerancy;
+-(NSImage*) floodFillOn:(NSImage*)image 
+              fromPoint:(NSPoint)start 
+          withTolerancy:(NSUInteger)tolerancy;
 
 -(void) fillX:(NSInteger)x
             y:(NSInteger)y;
