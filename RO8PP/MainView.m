@@ -207,6 +207,7 @@
                 [histBMP setColor:[NSColor colorWithDeviceRed:1 green:0 blue:0 alpha:1]
                               atX:x y:y];
 //                DLog(@"test: red\n");
+                
             }
             if ([self value0255From:green[x] Min:minG Max:maxG] == y) {
                 [histBMP setColor:[NSColor colorWithDeviceRed:0 green:1 blue:0 alpha:1]
