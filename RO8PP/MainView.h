@@ -13,7 +13,9 @@
     IBOutlet NSWindow *MyWindow;
     IBOutlet NSImageView *ViewImage; 
     NSImage* image;
+    NSImage* hist;
 }
 - (IBAction)openFile:(id)sender;
+-(IBAction)hist:(id)sender;
 @end
  

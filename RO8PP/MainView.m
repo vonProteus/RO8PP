@@ -70,6 +70,12 @@
 				
 				NSRect frame = [MyWindow frame];
 				frame.size = [imageFromBundle size];
+                
+                {
+                    NSString* stringTMP = [NSString stringWithFormat:@"H: %f W: %f\n",frame.size.height, frame.size.width];
+                    DLog(@"%@",stringTMP);
+                }
+
 
 				frame.size.height += 20;
 				
@@ -92,7 +98,7 @@
     Segmentation* s = [[Segmentation alloc] init];
     NSImage* newImage = [s praireFireOn:image
                               fromPoint:location
-                          withTolerancy:5];
+                          withTolerancy:50];
     if (newImage !=nil)
     {
         

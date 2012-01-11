@@ -1,3 +1,9 @@
 Projekt na Rospoznawanie Obrazu AGH Krakow 2011/12
 
 8. Dany jest obraz kolorowy. Dokonaj segmentacji obrazu metodą „pożaru prerii”. Jako dane wejściowe przyjmij m.in. wartość progową poziomu jasności, dopuszczalną różnicę poziomów jasności sąsiadujących pikseli, minimalny rozmiar znalezionych obiektów.
+
+todo:
+-histogramy
++probmien rgb
+-parametry w pliku kofiguracyjnym
+-obraz po segmentacji

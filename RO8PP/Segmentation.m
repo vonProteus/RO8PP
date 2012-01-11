@@ -32,10 +32,7 @@
     bmp = [[NSBitmapImageRep alloc] initWithData:[image2 TIFFRepresentation]];
     
     if (bmp == nil) {
-        {
-            NSString* stringTMP = [NSString stringWithFormat:@"error nil\n"];
-            DLog(@"%@",stringTMP);
-        }
+        DLog(@"error: nil\n");
         return nil;
     }
     
@@ -43,13 +40,20 @@
     
     X = [bmp pixelsWide];
     Y = [bmp pixelsHigh];
-    start = NSMakePoint(start.x, Y - start.y);    
+    {
+        NSString* stringTMP = [NSString stringWithFormat:@"X: %ld Y: %ld\n", X,Y];
+        DLog(@"%@",stringTMP);
+    }
+
+    start = NSMakePoint(start.x -1, Y - start.y -2);    
     if (start.x > X && start.x >=0) {
         return nil;
     }
     if (start.y > Y && start.y >=0) {
         return nil;
     }
+    
+//    [bmp setColor:[NSColor yellowColor] atX:start.x y:start.y];
     
     
    
@@ -68,14 +72,24 @@
     
     targetColor = [bmp colorAtX:start.x 
                               y:start.y];
+    
 
     [self fillX:start.x 
               y:start.y];
-    
+//    int r = 50;
+//    for (int a = -r; a < r; ++a) {
+//        for (int b = -r; b < r; ++b) {
+//            [bmp setColor:[NSColor whiteColor]
+//                      atX:(NSInteger)(start.x)+a y:(NSInteger)(start.y)+b];
+//        }
+//    }
+//    [bmp setColor:[NSColor yellowColor] 
+//              atX:start.x y:start.y];
+
     free(bmpVizited);
     
     {
-        NSString* stringTMP = [NSString stringWithFormat:@"zmienionycj %ld\n",change];
+        NSString* stringTMP = [NSString stringWithFormat:@"zmieniono %ld\n",change];
         DLog(@"%@",stringTMP);
     }
 
@@ -115,10 +129,15 @@
         [bmp setColor:[NSColor greenColor] 
                   atX:x 
                     y:y];
-        [self fillX:x-1 y:y-1];
-        [self fillX:x+1 y:y+1];
-        [self fillX:x+1 y:y-1];
-        [self fillX:x-1 y:y+1];
+//        [self fillX:x-1 y:y-1];
+//        [self fillX:x+1 y:y+1];
+//        [self fillX:x+1 y:y-1];
+//        [self fillX:x-1 y:y+1];
+        
+        [self fillX:x y:y-1];
+        [self fillX:x y:y+1];
+        [self fillX:x+1 y:y];
+        [self fillX:x-1 y:y];
     }
     
 }
@@ -180,8 +199,22 @@
 }
 
 -(double)grayValueOfColor:(NSColor *)rgba{
-    return [rgba brightnessComponent];
+//    return [rgba brightnessComponent];
+    double a = [rgba alphaComponent];
+    double r = [rgba redComponent];
+    double g = [rgba greenComponent];
+    double b = [rgba blueComponent];
+    
+    return sqrt(r*r + g*g + b*b);
 }
 
 
+-(void)hist{
+    
+    for (int a = 0; a < X; ++a) {
+        for (int b = 0; b < Y; ++b) {
+        }
+    }
+
+}
 @end

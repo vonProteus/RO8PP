@@ -28,4 +28,5 @@
 
 -(NSBitmapImageRep*) grayscaleImageRep:(NSBitmapImageRep*)img;
 -(double) grayValueOfColor:(NSColor*)rgba;
+-(void) hist;
 @end
