@@ -15,6 +15,7 @@
     IBOutlet NSImageView *helpViewImage;
     NSImage* image;
     NSImage* helpImage;
+    IBOutlet NSImageView *histViewImage;
     NSImage* hist;
     IBOutlet NSSlider* tolerancySlider;
     IBOutlet NSTextField* tolerancyTextField;
@@ -22,5 +23,10 @@
 -(IBAction) openFile:(id)sender;
 -(IBAction) hist:(id)sender;
 -(IBAction) valueDidChange:(id)sender;
+
+
+-(int) value0255From:(int)inVal 
+                 Min:(int)min
+                 Max:(int)max;
 @end
  

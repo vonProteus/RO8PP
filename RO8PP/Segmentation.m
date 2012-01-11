@@ -204,13 +204,84 @@
 }
 
 
--(void)hist{
+-(NSDictionary*) hist:(NSImage *)im{
+    bmp = [[NSBitmapImageRep alloc] initWithData:[im TIFFRepresentation]];
     
-    for (int a = 0; a < X; ++a) {
-        for (int b = 0; b < Y; ++b) {
+    if (bmp == nil) {
+        DLog(@"error: nil\n");
+        return nil;
+    }
+        
+    X = [bmp pixelsWide];
+    Y = [bmp pixelsHigh];
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+    NSMutableArray* red = [[NSMutableArray alloc] init];
+    NSMutableArray* green = [[NSMutableArray alloc] init];
+    NSMutableArray* blue = [[NSMutableArray alloc] init];
+    NSMutableArray* gray = [[NSMutableArray alloc] init];
+    
+    for (int a = 0; a < 256; ++a) {
+        [red addObject:[NSNumber numberWithInt:0]];
+        [green addObject:[NSNumber numberWithInt:0]];
+        [blue addObject:[NSNumber numberWithInt:0]];
+        [gray addObject:[NSNumber numberWithInt:0]];
+    }
+    
+    
+    
+    for (int x = 0; x < X; ++x) {
+        for (int y = 0; y < Y; ++y) {
+            NSColor* rgba = [bmp colorAtX:x y:y];
+            int r = [rgba redComponent]*255.0;
+            int g = [rgba greenComponent]*255.0;
+            int b = [rgba greenComponent]*255.0;
+            int gr = [self grayValueOfColor:rgba];//*255.0;
+//            {
+//                NSString* stringTMP = [NSString stringWithFormat:@"r: %i g: %i b: %i gr %i\n", r, g, b, gr];
+//                DLog(@"%@",stringTMP);
+//            }
+
+            
+            [red replaceObjectAtIndex:r withObject:[NSNumber numberWithInt:[[red objectAtIndex:r] intValue]+1]];
+            [green replaceObjectAtIndex:g withObject:[NSNumber numberWithInt:[[green objectAtIndex:g] intValue]+1]];
+            [blue replaceObjectAtIndex:b withObject:[NSNumber numberWithInt:[[blue objectAtIndex:b] intValue]+1]];
+            [gray replaceObjectAtIndex:gr withObject:[NSNumber numberWithInt:[[gray objectAtIndex:gr] intValue]+1]];
         }
     }
-
+    
+    NSMutableArray* tmpMinMax = [[NSMutableArray alloc] init];
+    [tmpMinMax addObject:[NSNumber numberWithInt:[self minFrom:red]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:[self minFrom:green]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:[self minFrom:blue]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:[self minFrom:gray]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:[self maxFrom:red]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:[self maxFrom:green]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:[self maxFrom:blue]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:[self maxFrom:gray]]];
+    
+    int min = [self minFrom:tmpMinMax];
+    int max = [self maxFrom:tmpMinMax];
+    
+    [dict setValue:red forKey:@"red"];
+    [dict setValue:green forKey:@"green"];
+    [dict setValue:blue forKey:@"blue"];
+    [dict setValue:gray forKey:@"gray"];
+    [dict setValue:[NSNumber numberWithInt:min] forKey:@"min"];
+    [dict setValue:[NSNumber numberWithInt:max] forKey:@"max"];
+    
+    [dict setValue:[NSNumber numberWithInt:[self minFrom:red]] forKey:@"minR"];
+    [dict setValue:[NSNumber numberWithInt:[self maxFrom:red]] forKey:@"maxR"];
+    
+    [dict setValue:[NSNumber numberWithInt:[self minFrom:green]] forKey:@"minG"];
+    [dict setValue:[NSNumber numberWithInt:[self maxFrom:green]] forKey:@"maxG"];
+    
+    [dict setValue:[NSNumber numberWithInt:[self minFrom:blue]] forKey:@"minB"];
+    [dict setValue:[NSNumber numberWithInt:[self maxFrom:blue]] forKey:@"maxB"];
+    
+    [dict setValue:[NSNumber numberWithInt:[self minFrom:gray]] forKey:@"minGr"];
+    [dict setValue:[NSNumber numberWithInt:[self maxFrom:gray]] forKey:@"maxGr"];
+        
+    return dict;
 }
 
 -(NSImage*) addMapTo:(NSImage *)imageToMap 
@@ -317,5 +388,32 @@
     
 
     
+}
+
+
+
+
+-(int) minFrom:(NSArray *)a{
+    int min = [[a objectAtIndex:0] intValue];
+    for (int b = 1; b < [a count]; ++b) {
+        int tmp = [[a objectAtIndex:b] intValue];
+        if (min > tmp){
+            min = tmp;
+        }
+    }
+    
+    return min;
+}
+
+-(int) maxFrom:(NSArray *)a{
+    int max = [[a objectAtIndex:0] intValue];
+    for (int b = 1; b < [a count]; ++b) {
+        int tmp = [[a objectAtIndex:b] intValue];
+        if (max < tmp){
+            max = tmp;
+        }
+    }
+    
+    return max;
 }
 @end

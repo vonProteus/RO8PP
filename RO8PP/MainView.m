@@ -96,10 +96,11 @@
                 [helpViewImage setImage:newHelpImage];
                 helpImage = newHelpImage;
                 
-
+                [self hist:nil];
 			}
 		}
 	}
+    DLog(@"test: ok\n");
 }
 
 - (void) mouseDown:(NSEvent*)someEvent{
@@ -150,6 +151,97 @@
 //    DLog(@"test: ok?\n");
     
     [tolerancyTextField setStringValue:[NSString stringWithFormat:@"tolerancja: %ld", [tolerancySlider integerValue]]];
+}
+
+-(IBAction)hist:(id)sender{
+    Segmentation* s = [[Segmentation alloc] init];
+    NSDictionary* dict = [s hist:image];
+    int red[256];
+    int green[256];
+    int blue[256];
+    int gray[256];
+    int min = [[dict valueForKey:@"min"] intValue];
+    int max = [[dict valueForKey:@"max"] intValue];
+
+    int minR = [[dict valueForKey:@"minR"] intValue];
+    int maxR = [[dict valueForKey:@"maxR"] intValue];
+
+    int minG = [[dict valueForKey:@"minG"] intValue];
+    int maxG = [[dict valueForKey:@"maxG"] intValue];
+
+    int minB = [[dict valueForKey:@"minB"] intValue];
+    int maxB = [[dict valueForKey:@"maxB"] intValue];
+
+    int minGr = [[dict valueForKey:@"minGr"] intValue];
+    int maxGr = [[dict valueForKey:@"maxGr"] intValue];
+
+    for (int a = 0; a < 256; ++a) {
+        red[a] = [[[dict valueForKey:@"red"] objectAtIndex:a] intValue];
+        green[a] = [[[dict valueForKey:@"green"] objectAtIndex:a] intValue];
+        blue[a] = [[[dict valueForKey:@"blue"] objectAtIndex:a] intValue];
+        gray[a] = [[[dict valueForKey:@"gray"] objectAtIndex:a] intValue];
+    }
+    
+       
+    NSBitmapImageRep* histBMP = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL
+                                                                        pixelsWide:256 
+                                                                        pixelsHigh:256
+                                                                     bitsPerSample:8
+                                                                   samplesPerPixel:4
+                                                                          hasAlpha:YES 
+                                                                          isPlanar:NO
+                                                                    colorSpaceName:@"NSCalibratedRGBColorSpace" 
+                                                                       bytesPerRow:0
+                                                                      bitsPerPixel:0];
+    
+    for (int x = 0; x < 256; ++x) {
+        {
+            NSString* stringTMP = [NSString stringWithFormat:@"x:%i R:%i(%i) G:%i(%i) B:%i(%i) Gr:%i(%i) Min:%i Max:%i\n", x, red[x], [self value0255From:red[x] Min:minR Max:maxR], green[x], [self value0255From:green[x] Min:minG Max:maxG], blue[x], [self value0255From:blue[x] Min:minB Max:maxB], gray[x], [self value0255From:gray[x] Min:minGr Max:maxGr], min, max];
+            DLog(@"%@",stringTMP);
+        }
+
+        for (int y = 0; y < 256; ++y) {
+            [histBMP setColor:[NSColor colorWithDeviceRed:0.5 green:0.5 blue:0.5 alpha:0] 
+                          atX:x y:y];
+            if ([self value0255From:red[x] Min:minR Max:maxR] == y) {
+                [histBMP setColor:[NSColor colorWithDeviceRed:1 green:0 blue:0 alpha:1]
+                              atX:x y:y];
+//                DLog(@"test: red\n");
+            }
+            if ([self value0255From:green[x] Min:minG Max:maxG] == y) {
+                [histBMP setColor:[NSColor colorWithDeviceRed:0 green:1 blue:0 alpha:1]
+                              atX:x y:y];
+            }
+            if ([self value0255From:blue[x] Min:minB Max:maxB] == y) {
+                [histBMP setColor:[NSColor colorWithDeviceRed:0 green:0 blue:1 alpha:1] 
+                              atX:x y:y];
+            }
+            if ([self value0255From:gray[x] Min:minGr Max:maxGr] == y) {
+                
+                [histBMP setColor:[NSColor grayColor]
+                              atX:x y:y];
+            }
+            
+        }
+    }
+    
+    
+    NSImage* newHist = [[NSImage alloc] init];
+    [newHist addRepresentation:histBMP];
+    [histViewImage setImage:newHist];
+    hist = newHist;
+    DLog(@"test: ok\n");
+}
+
+-(int) value0255From:(int)inVal 
+                 Min:(int)min
+                 Max:(int)max{
+    int outVal = 0;
+    
+    outVal = ((double)(inVal - min)/(double)(max - min))*255.0;
+    
+    
+    return outVal;
 }
 
 @end

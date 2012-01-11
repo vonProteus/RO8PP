@@ -34,5 +34,8 @@
 
 -(NSBitmapImageRep*) grayscaleImageRep:(NSBitmapImageRep*)img;
 -(double) grayValueOfColor:(NSColor*)rgba;
--(void) hist;
+-(NSDictionary*) hist:(NSImage*)im;
+
+-(int) minFrom:(NSArray*)a;
+-(int) maxFrom:(NSArray*)a;
 @end
