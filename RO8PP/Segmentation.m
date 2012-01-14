@@ -234,7 +234,7 @@
             NSColor* rgba = [bmp colorAtX:x y:y];
             int r = [rgba redComponent]*255.0;
             int g = [rgba greenComponent]*255.0;
-            int b = [rgba greenComponent]*255.0;
+            int b = [rgba blueComponent]*255.0;
             int gr = [self grayValueOfColor:rgba];//*255.0;
 //            {
 //                NSString* stringTMP = [NSString stringWithFormat:@"r: %i g: %i b: %i gr %i\n", r, g, b, gr];
@@ -250,14 +250,14 @@
     }
     
     NSMutableArray* tmpMinMax = [[NSMutableArray alloc] init];
-    [tmpMinMax addObject:[NSNumber numberWithInt:[self minFrom:red]]];
-    [tmpMinMax addObject:[NSNumber numberWithInt:[self minFrom:green]]];
-    [tmpMinMax addObject:[NSNumber numberWithInt:[self minFrom:blue]]];
-    [tmpMinMax addObject:[NSNumber numberWithInt:[self minFrom:gray]]];
-    [tmpMinMax addObject:[NSNumber numberWithInt:[self maxFrom:red]]];
-    [tmpMinMax addObject:[NSNumber numberWithInt:[self maxFrom:green]]];
-    [tmpMinMax addObject:[NSNumber numberWithInt:[self maxFrom:blue]]];
-    [tmpMinMax addObject:[NSNumber numberWithInt:[self maxFrom:gray]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:(int)[self minFrom:red]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:(int)[self minFrom:green]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:(int)[self minFrom:blue]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:(int)[self minFrom:gray]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:(int)[self maxFrom:red]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:(int)[self maxFrom:green]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:(int)[self maxFrom:blue]]];
+    [tmpMinMax addObject:[NSNumber numberWithInt:(int)[self maxFrom:gray]]];
     
     int min = [self minFrom:tmpMinMax];
     int max = [self maxFrom:tmpMinMax];
@@ -269,17 +269,17 @@
     [dict setValue:[NSNumber numberWithInt:min] forKey:@"min"];
     [dict setValue:[NSNumber numberWithInt:max] forKey:@"max"];
     
-    [dict setValue:[NSNumber numberWithInt:[self minFrom:red]] forKey:@"minR"];
-    [dict setValue:[NSNumber numberWithInt:[self maxFrom:red]] forKey:@"maxR"];
+    [dict setValue:[NSNumber numberWithInt:(int)[self minFrom:red]] forKey:@"minR"];
+    [dict setValue:[NSNumber numberWithInt:(int)[self maxFrom:red]] forKey:@"maxR"];
     
-    [dict setValue:[NSNumber numberWithInt:[self minFrom:green]] forKey:@"minG"];
-    [dict setValue:[NSNumber numberWithInt:[self maxFrom:green]] forKey:@"maxG"];
+    [dict setValue:[NSNumber numberWithInt:(int)[self minFrom:green]] forKey:@"minG"];
+    [dict setValue:[NSNumber numberWithInt:(int)[self maxFrom:green]] forKey:@"maxG"];
     
-    [dict setValue:[NSNumber numberWithInt:[self minFrom:blue]] forKey:@"minB"];
-    [dict setValue:[NSNumber numberWithInt:[self maxFrom:blue]] forKey:@"maxB"];
+    [dict setValue:[NSNumber numberWithInt:(int)[self minFrom:blue]] forKey:@"minB"];
+    [dict setValue:[NSNumber numberWithInt:(int)[self maxFrom:blue]] forKey:@"maxB"];
     
-    [dict setValue:[NSNumber numberWithInt:[self minFrom:gray]] forKey:@"minGr"];
-    [dict setValue:[NSNumber numberWithInt:[self maxFrom:gray]] forKey:@"maxGr"];
+    [dict setValue:[NSNumber numberWithInt:(int)[self minFrom:gray]] forKey:@"minGr"];
+    [dict setValue:[NSNumber numberWithInt:(int)[self maxFrom:gray]] forKey:@"maxGr"];
         
     return dict;
 }

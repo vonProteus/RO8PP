@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Segmentation.h"
+#import "histView.h"
 
 @interface MainView : NSView{
     IBOutlet NSWindow *MyWindow;
@@ -19,6 +20,7 @@
     NSImage* hist;
     IBOutlet NSSlider* tolerancySlider;
     IBOutlet NSTextField* tolerancyTextField;
+    IBOutlet histView* hv;
 }
 -(IBAction) openFile:(id)sender;
 -(IBAction) hist:(id)sender;

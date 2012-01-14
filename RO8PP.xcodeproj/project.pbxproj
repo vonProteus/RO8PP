@@ -15,6 +15,7 @@
 		7064490614B3016600BDFBBA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7064490514B3016600BDFBBA /* AppDelegate.m */; };
 		7064490914B3016600BDFBBA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7064490714B3016600BDFBBA /* MainMenu.xib */; };
 		7064491314B3074B00BDFBBA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7064491214B3074B00BDFBBA /* QuartzCore.framework */; };
+		70B1F8FA14BE09F000D6F1A6 /* histView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70B1F8F914BE09F000D6F1A6 /* histView.m */; };
 		70EE569814B5AC670074F6B1 /* Segmentation.m in Sources */ = {isa = PBXBuildFile; fileRef = 70EE569714B5AC670074F6B1 /* Segmentation.m */; };
 		70EE569F14B5C9F80074F6B1 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 70EE569E14B5C9F80074F6B1 /* README */; };
 		70F4C2AC14B729370016DBE4 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 70F4C2AB14B729370016DBE4 /* MainView.m */; };
@@ -37,6 +38,8 @@
 		7064490514B3016600BDFBBA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7064490814B3016600BDFBBA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		7064491214B3074B00BDFBBA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		70B1F8F814BE09F000D6F1A6 /* histView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = histView.h; sourceTree = "<group>"; };
+		70B1F8F914BE09F000D6F1A6 /* histView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = histView.m; sourceTree = "<group>"; };
 		70EE569614B5AC670074F6B1 /* Segmentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segmentation.h; sourceTree = "<group>"; };
 		70EE569714B5AC670074F6B1 /* Segmentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Segmentation.m; sourceTree = "<group>"; };
 		70EE569E14B5C9F80074F6B1 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 				70F4C2AB14B729370016DBE4 /* MainView.m */,
 				7059B46C14BDD6C8008BC445 /* NSMutableArray+Stack.h */,
 				7059B46D14BDD6C8008BC445 /* NSMutableArray+Stack.m */,
+				70B1F8F814BE09F000D6F1A6 /* histView.h */,
+				70B1F8F914BE09F000D6F1A6 /* histView.m */,
 			);
 			path = RO8PP;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 				70EE569814B5AC670074F6B1 /* Segmentation.m in Sources */,
 				70F4C2AC14B729370016DBE4 /* MainView.m in Sources */,
 				7059B46E14BDD6C8008BC445 /* NSMutableArray+Stack.m in Sources */,
+				70B1F8FA14BE09F000D6F1A6 /* histView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

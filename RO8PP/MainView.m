@@ -156,10 +156,16 @@
 -(IBAction)hist:(id)sender{
     Segmentation* s = [[Segmentation alloc] init];
     NSDictionary* dict = [s hist:image];
+    hv.dict = dict;
     int red[256];
     int green[256];
     int blue[256];
     int gray[256];
+    int redSum = 0;
+    int greenSum = 0;
+    int blueSum = 0;
+    int graySum = 0;
+    
     int min = [[dict valueForKey:@"min"] intValue];
     int max = [[dict valueForKey:@"max"] intValue];
 
@@ -199,6 +205,11 @@
             NSString* stringTMP = [NSString stringWithFormat:@"x:%i R:%i(%i) G:%i(%i) B:%i(%i) Gr:%i(%i) Min:%i Max:%i\n", x, red[x], [self value0255From:red[x] Min:minR Max:maxR], green[x], [self value0255From:green[x] Min:minG Max:maxG], blue[x], [self value0255From:blue[x] Min:minB Max:maxB], gray[x], [self value0255From:gray[x] Min:minGr Max:maxGr], min, max];
             DLog(@"%@",stringTMP);
         }
+        
+        redSum += red[x];
+        greenSum += green[x];
+        blueSum += blue[x];
+        graySum += gray[x];
 
         for (int y = 0; y < 256; ++y) {
             [histBMP setColor:[NSColor colorWithDeviceRed:0.5 green:0.5 blue:0.5 alpha:0] 
@@ -226,11 +237,19 @@
         }
     }
     
+    {
+        NSString* stringTMP = [NSString stringWithFormat:@"sums R:%i G:%i B:%i Gr:%i all:%f\n", redSum, greenSum, blueSum, graySum, image.size.width*image.size.height];
+        DLog(@"%@",stringTMP);
+    }
+
     
-    NSImage* newHist = [[NSImage alloc] init];
-    [newHist addRepresentation:histBMP];
-    [histViewImage setImage:newHist];
-    hist = newHist;
+    
+//    
+//    NSImage* newHist = [[NSImage alloc] init];
+//    [newHist addRepresentation:histBMP];
+//    [histViewImage setImage:newHist];
+//    hist = newHist;
+    [hv display];
     DLog(@"test: ok\n");
 }
 
