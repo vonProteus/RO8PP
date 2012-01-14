@@ -330,10 +330,10 @@
     
     X = [bmp pixelsWide];
     Y = [bmp pixelsHigh];
-    {
-        NSString* stringTMP = [NSString stringWithFormat:@"X: %ld Y: %ld\n", X,Y];
-        DLog(@"%@",stringTMP);
-    }
+//    {
+//        NSString* stringTMP = [NSString stringWithFormat:@"X: %ld Y: %ld\n", X,Y];
+//        DLog(@"%@",stringTMP);
+//    }
     
     start = NSMakePoint(start.x -1, Y - start.y -2);    
     if (start.x > X && start.x >=0) {

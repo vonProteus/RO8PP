@@ -27,46 +27,15 @@
         DLog(@"error: dict nil\n");
         return;
     }
+    [[NSColor whiteColor] setFill];
+    NSRectFill(dirtyRect);
     
-    int red[256];
-    int green[256];
-    int blue[256];
-    int gray[256];
-    int min = [[dict valueForKey:@"min"] intValue];
-    int max = [[dict valueForKey:@"max"] intValue];
-    
-    int minR = [[dict valueForKey:@"minR"] intValue];
-    int maxR = [[dict valueForKey:@"maxR"] intValue];
-    
-    int minG = [[dict valueForKey:@"minG"] intValue];
-    int maxG = [[dict valueForKey:@"maxG"] intValue];
-    
-    int minB = [[dict valueForKey:@"minB"] intValue];
-    int maxB = [[dict valueForKey:@"maxB"] intValue];
-    
-    int minGr = [[dict valueForKey:@"minGr"] intValue];
-    int maxGr = [[dict valueForKey:@"maxGr"] intValue];
-    
-    for (int a = 0; a < 256; ++a) {
-        red[a] = [[[dict valueForKey:@"red"] objectAtIndex:a] intValue];
-        green[a] = [[[dict valueForKey:@"green"] objectAtIndex:a] intValue];
-        blue[a] = [[[dict valueForKey:@"blue"] objectAtIndex:a] intValue];
-        gray[a] = [[[dict valueForKey:@"gray"] objectAtIndex:a] intValue];
-    }
 
-    [self drawlineFromArry:[dict valueForKey:@"red"] withColor:[NSColor redColor]];
-    [self drawlineFromArry:[dict valueForKey:@"green"] withColor:[NSColor greenColor]];
-    [self drawlineFromArry:[dict valueForKey:@"blue"] withColor:[NSColor blueColor]];
-    [self drawlineFromArry:[dict valueForKey:@"grayred"] withColor:[NSColor grayColor]];
+    [self drawlineFromArry:[dict valueForKey:@"red"] withColor:[NSColor colorWithDeviceRed:1 green:0 blue:0 alpha:0.6]];
+    [self drawlineFromArry:[dict valueForKey:@"green"] withColor:[NSColor colorWithDeviceRed:0 green:1 blue:0 alpha:0.6]];
+    [self drawlineFromArry:[dict valueForKey:@"blue"] withColor:[NSColor colorWithDeviceRed:0 green:0 blue:1 alpha:0.6]];
+    [self drawlineFromArry:[dict valueForKey:@"gray"] withColor:[NSColor grayColor]];
     
-//    NSBeep();
-//    
-//    NSBezierPath* path = [[NSBezierPath alloc] init];
-//    [path moveToPoint:NSMakePoint(0, 0)];
-//    [path lineToPoint:NSMakePoint(255, 2*255)];
-//    [[NSColor yellowColor] set];
-//    
-//    [path stroke];
 
     // Drawing code here.
 }
@@ -75,8 +44,8 @@
                  Min:(int)min
                  Max:(int)max{
     double outVal = 0;
-    double up = log2(inVal - min);
-    double down = log2(max - min);
+    double up = (inVal - min);
+    double down = (max - min);
     
     outVal = (up/down)*255.0;
     
@@ -90,10 +59,13 @@
     return (int)outVal;
 }
 
--(void) drawlineFromArry:(NSArray*)array 
+-(void) drawlineFromArry:(NSArray*)array1 
                withColor:(NSColor*)rgba{
-    DLog(@"test: start\n");
+//    DLog(@"test: start\n");
     Segmentation* sTMP = [[Segmentation alloc] init];
+    NSMutableArray* array = [array1 mutableCopy];
+    [array removeObjectAtIndex:0];
+    [array removeLastObject];
     int min = (int)[sTMP minFrom:array];
     int max = (int)[sTMP maxFrom:array];
     NSBezierPath* path = [[NSBezierPath alloc] init];
@@ -107,17 +79,20 @@
 //        }
 
         NSPoint tmp = NSMakePoint(a, val);
-        {
-            NSString* stringTMP = [NSString stringWithFormat:@"line to x: %f y: %f\n", tmp.x, tmp.y];
-            DLog(@"%@",stringTMP);
-        }
+//        {
+//            NSString* stringTMP = [NSString stringWithFormat:@"line to x: %f y: %f\n", tmp.x, tmp.y];
+//            DLog(@"%@",stringTMP);
+//        }
 
         [path lineToPoint:tmp];
     }
     [rgba set];
+    [path lineToPoint:NSMakePoint(256, -1)];
+    [rgba setFill];
+    [path fill];
     
     [path stroke];
-    DLog(@"test: end\n");
+//    DLog(@"test: end\n");
     
 }
 
