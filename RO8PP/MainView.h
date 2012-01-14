@@ -23,6 +23,7 @@
     IBOutlet histView* hv;
 }
 -(IBAction) openFile:(id)sender;
+-(IBAction) saveFile:(id)sender;
 -(IBAction) hist:(id)sender;
 -(IBAction) valueDidChange:(id)sender;
 

@@ -88,7 +88,7 @@
                 NSBitmapImageRep* bmp2 = [[NSBitmapImageRep alloc] initWithData:[imageFromBundle TIFFRepresentation]];
                 for (int a = 0; a < [bmp2 pixelsWide]; ++a) {
                     for (int b = 0; b < [bmp2 pixelsHigh]; ++b) {
-                        [bmp2 setColor:[NSColor colorWithDeviceRed:1 green:1 blue:1 alpha:1] atX:a y:b];
+                        [bmp2 setColor:[NSColor colorWithDeviceRed:1 green:1 blue:1 alpha:0] atX:a y:b];
                     }
                 }
                 NSImage* newHelpImage = [[NSImage alloc] init];
@@ -170,6 +170,29 @@
     
     
     return outVal;
+}
+
+-(IBAction)saveFile:(id)sender{
+    NSSavePanel *tvarNSSavePanelObj	= [NSSavePanel savePanel];
+    [tvarNSSavePanelObj setAllowedFileTypes:[NSArray arrayWithObject:@"png"]];
+    
+    NSInteger tvarInt	= [tvarNSSavePanelObj runModal];
+    if(tvarInt == NSOKButton){
+        NSData *imageData = [helpImage TIFFRepresentation];
+        NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
+        NSDictionary *imageProps = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:1.0] forKey:NSImageCompressionFactor];
+        imageData = [imageRep representationUsingType:NSPNGFileType properties:imageProps];
+//        [imageData writeToFile:tvarNSSavePanelObj.URL atomically:NO];
+        [imageData writeToURL:tvarNSSavePanelObj.URL atomically:NO];
+//     	NSLog(@"doSaveAs we have an OK button %@");	
+    } else if(tvarInt == NSCancelButton) {
+//     	NSLog(@"doSaveAs we have a Cancel button");
+     	return;
+    } else {
+     	NSLog(@"doSaveAs tvarInt not equal 1 or zero = %ld",tvarInt);
+     	return;
+    } // end if     
+    
 }
 
 @end

@@ -1333,7 +1333,7 @@
 							</set>
 							<string key="NSFrameSize">{480, 360}</string>
 							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSNextKeyView"/>
+							<reference key="NSWindow"/>
 							<string key="NSReuseIdentifierKey">_NS:2141</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSImageCell" key="NSCell" id="330508074">
@@ -1350,6 +1350,7 @@
 					</array>
 					<string key="NSFrameSize">{480, 360}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="147025283"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
@@ -1381,7 +1382,6 @@
 							<string key="NSFrame">{{18, 309}, {265, 21}}</string>
 							<reference key="NSSuperview" ref="1002273912"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:779</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSliderCell" key="NSCell" id="121438696">
@@ -1446,13 +1446,13 @@
 							<string key="NSFrame">{{13, 10}, {275, 301}}</string>
 							<reference key="NSSuperview" ref="1002273912"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="720522818"/>
+							<reference key="NSNextKeyView" ref="697135790"/>
 							<string key="NSReuseIdentifierKey">_NS:608</string>
 							<array class="NSMutableArray" key="NSTabViewItems">
 								<object class="NSTabViewItem" id="707884253">
 									<string key="NSIdentifier">1</string>
 									<object class="NSView" key="NSView" id="720522818">
-										<reference key="NSNextResponder" ref="34186299"/>
+										<nil key="NSNextResponder"/>
 										<int key="NSvFlags">256</int>
 										<array class="NSMutableArray" key="NSSubviews">
 											<object class="NSImageView" id="111519950">
@@ -1468,7 +1468,6 @@
 												</set>
 												<string key="NSFrame">{{0, -3}, {255, 255}}</string>
 												<reference key="NSSuperview" ref="720522818"/>
-												<reference key="NSWindow"/>
 												<reference key="NSNextKeyView" ref="185829982"/>
 												<string key="NSReuseIdentifierKey">_NS:2141</string>
 												<bool key="NSEnabled">YES</bool>
@@ -1485,8 +1484,6 @@
 											</object>
 										</array>
 										<string key="NSFrame">{{10, 33}, {255, 255}}</string>
-										<reference key="NSSuperview" ref="34186299"/>
-										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="111519950"/>
 										<string key="NSReuseIdentifierKey">_NS:610</string>
 									</object>
@@ -1497,7 +1494,7 @@
 								<object class="NSTabViewItem" id="963310753">
 									<string key="NSIdentifier">2</string>
 									<object class="NSView" key="NSView" id="697135790">
-										<nil key="NSNextResponder"/>
+										<reference key="NSNextResponder" ref="34186299"/>
 										<int key="NSvFlags">256</int>
 										<array class="NSMutableArray" key="NSSubviews">
 											<object class="NSCustomView" id="765955082">
@@ -1505,12 +1502,16 @@
 												<int key="NSvFlags">268</int>
 												<string key="NSFrameSize">{255, 255}</string>
 												<reference key="NSSuperview" ref="697135790"/>
+												<reference key="NSWindow"/>
+												<reference key="NSNextKeyView" ref="34186299"/>
 												<string key="NSReuseIdentifierKey">_NS:1192</string>
 												<string key="NSClassName">histView</string>
 											</object>
 										</array>
 										<string key="NSFrame">{{10, 33}, {255, 255}}</string>
-										<reference key="NSNextKeyView"/>
+										<reference key="NSSuperview" ref="34186299"/>
+										<reference key="NSWindow"/>
+										<reference key="NSNextKeyView" ref="765955082"/>
 										<string key="NSReuseIdentifierKey">_NS:620</string>
 									</object>
 									<string key="NSLabel">Hist</string>
@@ -1518,13 +1519,13 @@
 									<reference key="NSTabView" ref="34186299"/>
 								</object>
 							</array>
-							<reference key="NSSelectedTabViewItem" ref="707884253"/>
+							<reference key="NSSelectedTabViewItem" ref="963310753"/>
 							<reference key="NSFont" ref="352478367"/>
 							<int key="NSTvFlags">0</int>
 							<bool key="NSAllowTruncatedLabels">YES</bool>
 							<bool key="NSDrawsBackground">YES</bool>
 							<array class="NSMutableArray" key="NSSubviews">
-								<reference ref="720522818"/>
+								<reference ref="697135790"/>
 							</array>
 						</object>
 					</array>
@@ -1765,14 +1766,6 @@
 						<reference key="destination" ref="708854459"/>
 					</object>
 					<int key="connectionID">357</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">saveDocument:</string>
-						<reference key="source" ref="1014"/>
-						<reference key="destination" ref="1023925487"/>
-					</object>
-					<int key="connectionID">362</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -2237,6 +2230,14 @@
 						<reference key="destination" ref="765955082"/>
 					</object>
 					<int key="connectionID">570</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">saveFile:</string>
+						<reference key="source" ref="439893737"/>
+						<reference key="destination" ref="1023925487"/>
+					</object>
+					<int key="connectionID">576</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -3591,7 +3592,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">575</int>
+			<int key="maxID">576</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3620,6 +3621,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="hist:">id</string>
 						<string key="openFile:">id</string>
+						<string key="saveFile:">id</string>
 						<string key="valueDidChange:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -3629,6 +3631,10 @@
 						</object>
 						<object class="IBActionInfo" key="openFile:">
 							<string key="name">openFile:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="saveFile:">
+							<string key="name">saveFile:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="valueDidChange:">

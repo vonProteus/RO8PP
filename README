@@ -1,9 +1,17 @@
 Projekt na Rospoznawanie Obrazu AGH Krakow 2011/12
 
+Program rozwiązujący dany projekt powinien spełniać następujące wymagania:
++program musi zostać napisany w języku/środowisku dostępnym w laboratorium gdzie prowadzone są zajęcia
++projekt nie może być wykonany w środowisku/języku Matlab. Matlab można wykorzystać dla testów porównawczych działania własnego programu
++wczytuje i wyświetla obrazy co najmniej formatu TIF
++tworzy opisane, znormalizowane histogramy dla wczytanego i przetwarzanego obrazu
++pokazuje wyniki działania w postaci obrazów, opisanych wykresów, tabel i schematów
++pozwala na zapis wynikowego obrazu co najmniej w formacie TIF
+
 8. Dany jest obraz kolorowy. Dokonaj segmentacji obrazu metodą „pożaru prerii”. Jako dane wejściowe przyjmij m.in. wartość progową poziomu jasności, dopuszczalną różnicę poziomów jasności sąsiadujących pikseli, minimalny rozmiar znalezionych obiektów.
 
 todo:
--histogramy
++histogramy
 +probmien rgb
 +parametry w pliku kofiguracyjnym
 +obraz po segmentacji
